@@ -6,36 +6,34 @@ const port = 4000;
 // database
 const budget = require("./models/budget")
 
-app.use(express.static('./public'));
-//express.json() and express.urlencoded() are for POST and PUT requests
-
-app.use(express.urlencoded({ extended: false }));
-
-// app.get("/", (req,res) => {
-//     res.send("I am alive")
-// });
+//parser
+app.use(express.urlencoded({ extended: false }))
+app.use(express.json())
 
 //index
-app.get("/budget/", (req, res) => {
-    res.render("index.ejs", { allBudgets: budgets, title: "Budgets - Index Page" });
+app.get("/budgets", (req, res) => {
+    res.render("index.ejs", { 
+        allBudgets: budgets, title: "Budgets - Index Page" });
 });
 //new
-app.get("/budget/new", (req, res) => {
-    res.render("new.ejs", { title: "Budget - New Page" });
+app.get("/budgets/new", (req, res) => {
+    res.render("new.ejs", {
+         title: "Budget - New Page" });
 });
 
 //create
-app.post("/budget", (req, res) => {
-    budgets.push(req.body)
-    res.redirect("/budget")
+app.post("/budgets", (req, res) => {
+    budget.push(req.body)
+    res.redirect("/budgets")
 });
 
 //show
 app.get("/budget/:indexOfBudgetsArray", (req, res) => {
-    res.render("show.ejs", { budget: budgets[req.params.indexOfBudgetsArray], title: "First - Show Page" });
+    res.render("show.ejs", { 
+        budget: budgets[req.params.indexOfBudgetsArray], title: "First - Show Page" });
 });
 
 //route listener
-app.listen(4000, () => {
-    console.log(`Listening...:`)
+app.listen(port, () => {
+    console.log(`Money Money Money`)
 });
