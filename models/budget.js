@@ -1,3 +1,4 @@
+// using this data to populate the index and show routes
 const budget = [
     {
       date: "April 1",
