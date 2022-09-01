@@ -15,7 +15,6 @@ app.use(express.static('./public'));
 //express.json() and express.urlencoded() are for POST and PUT requests
 
 app.use(express.urlencoded({ extended: false }));
-app.use(methodOverride('_method'));
 
 // app.get("/", (req,res) => {
 //     res.send("I am alive")
