@@ -2,7 +2,6 @@
 const express = require('express');
 const res = require('express/lib/response');
 const budget = require('./models/budget');
-const methodOverride = require('method-override');
 
 //initializer
 const app = express();
