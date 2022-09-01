@@ -3,7 +3,8 @@ const express = require("express");
 const app = express();
 const port = 4000;
 
-const bodyParser = require(`body-parser`);
+// database
+const budget = require("./models/budget")
 
 app.use(express.static('./public'));
 //express.json() and express.urlencoded() are for POST and PUT requests
@@ -36,5 +37,5 @@ app.get("/budget/:indexOfBudgetsArray", (req, res) => {
 
 //route listener
 app.listen(4000, () => {
-    console.log(`Listening...: ${PORT}`)
+    console.log(`Listening...:`)
 });
