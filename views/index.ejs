@@ -1,9 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <%- include('./partials/head.ejs')  %>
-    <title>Budgtr Index</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/normalize.css" />
+    <link rel="stylesheet" href="/skeleton.css" />
+    <title>Budgtr</title>
 </head>
+
 <body>
 
     <div class="container">
@@ -22,15 +29,13 @@
                     </td>
                     <td><%= budget[i].from %></td>
                     <td><%= budget[i].amount %></td>
-                    <td>
-                        <form action="/budgets/<%= i %>?_method=DELETE" method="POST">
-                            <input type="submit" value="DELETE">
-                        </form>
-                    </td>
                 </tr>
             <% } %>
         </table>
     </div>
+    <form action="/budgets/<%= i %>?_method=DELETE" method="POST">
+        <input type="submit" value="DELETE">
+    </form>
 
 </body>
 </html>
