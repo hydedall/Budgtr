@@ -1,12 +1,6 @@
 // required packages for express and dependencies
-const express = require('express');
-const res = require('express/lib/response');
-const budget = require('./models/budget');
-
-//initializer
+const express = require("express");
 const app = express();
-
-//app config
 const port = 4000;
 
 const bodyParser = require(`body-parser`);
