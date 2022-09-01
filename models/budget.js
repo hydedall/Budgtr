@@ -1,5 +1,5 @@
 // using this data to populate the index and show routes
-const budget = [
+module.exports = [
     {
       date: "April 1",
       name: "Income",
@@ -71,5 +71,3 @@ const budget = [
       tags: ["pets"],
     },
   ];
-
-module.exports = budget;

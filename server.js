@@ -1,17 +1,48 @@
-// required packages for express
-
-const {name} = require('ejs');
+// required packages for express and dependencies
 const express = require('express');
+const res = require('express/lib/response');
+const budget = require('./models/budget');
+const methodOverride = require('method-override');
 
+//initializer
 const app = express();
 
-//port
+//app config
+const port = 4000;
 
-const port = 3000;
+const bodyParser = require(`body-parser`);
 
-// export
-const budgets = require('./models/budget.js');
+app.use(express.static('./public'));
+//express.json() and express.urlencoded() are for POST and PUT requests
 
-app.listen(3000, ()=>{
-    console.log('listening...');
+app.use(express.urlencoded({ extended: false }));
+app.use(methodOverride('_method'));
+
+// app.get("/", (req,res) => {
+//     res.send("I am alive")
+// });
+
+//index
+app.get("/budget/", (req, res) => {
+    res.render("index.ejs", { allBudgets: budgets, title: "Budgets - Index Page" });
+});
+//new
+app.get("/budget/new", (req, res) => {
+    res.render("new.ejs", { title: "Budget - New Page" });
+});
+
+//create
+app.post("/budget", (req, res) => {
+    budgets.push(req.body)
+    res.redirect("/budget")
+});
+
+//show
+app.get("/budget/:indexOfBudgetsArray", (req, res) => {
+    res.render("show.ejs", { budget: budgets[req.params.indexOfBudgetsArray], title: "First - Show Page" });
+});
+
+//route listener
+app.listen(4000, () => {
+    console.log(`Listening...: ${PORT}`)
 });
